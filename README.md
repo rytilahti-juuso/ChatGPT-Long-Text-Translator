@@ -11,6 +11,14 @@
 
 # Translator script
 
+## Translating text in latex format
+ChatGPT can keep the correct syntax of latex while translating text. Please use GPT-4 as the model for this.
+
+Important note: If the translated text compiles without errors, but the pdf preview is missing some part of the text, check that there has not appeared additional `\end{document}`.
+
+
+## Translating and localizing study materials
+
 ChatGPT can also localize the translation. For example it can automatically:
 
 - Localize names, e.g. Ossi -> Oliver.
@@ -43,12 +51,14 @@ ChatGPT can also localize the translation. For example it can automatically:
 
 ## Initial set-up
 1. Change the API key.
-2. Check the initial prompt. Currently it is set to do Finnish to English translation. IMPORTANT: wite the initial prompt with the target language! (so if the translation is Finnish to Swedish, replace the initial prompt with english language.)
+2. In code line 206, select one of the prompts as the initial prompt. Currently it is set to do Finnish to English translation. IMPORTANT: write the initial prompt with the target language! (so if the translation is Finnish to Swedish, replace the initial prompt with a translated prompt written in Swedish.)
+3. In the code line 228, set the chunk size to correct one.
 4. Install required libraries.
 
 ## Workflow
-1. Paste the text to the `input.md`. You don't need to worry about exceeding maximum context, the script handles that for you. The text can be in plain text or in mardown format. [Here](https://github.com/rytilahti-juuso/ChatMD) you can find a good Python and Javascript templates on how to extract also the "syntactic sugar" from websites. The script requires some alteration if you want to extract e.g. code syntax from the website.
-2. Run code in `translator_script.py`. (First run might take long time.) The console prints some of the progress when the process is running. The GPT-4 translation can take up to 2min/chunk, GPT-3.5 is quicker.
+1. Complete the initial set-up. Update selected prompt and chunk size if necessary.
+2. Paste the text to the `input.md`. You don't need to worry about exceeding maximum context, the script handles that for you. The text can be in plain text, latex or in markdown format. [Here](https://github.com/rytilahti-juuso/ChatMD) you can find a good Python and Javascript templates on how to extract also the "syntactic sugar" from websites. The script requires some alteration if you want to extract e.g. code syntax from the website.
+2. Run code in `translator_script.py`. (First run might take long time.) The console prints some of the progress when the process is running. The GPT-4 translation can take up to 2min/chunk, GPT-3.5 is quicker. For latex use always GPT-4.
 3. Finally to see the translated text, open `output.md` with a viewer that supports `markdown` file format.
 
 ## Translator FAQ
