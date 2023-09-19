@@ -252,7 +252,10 @@ if file_content:
         if not USE_DEBUG_TEXT_IN_THE_OUTPUT:
             final_text = final_text + trans # exclude the debug text
         else:
-            final_text =final_text + chunk_divination + trans    
+            final_text =final_text + chunk_divination + trans
+        # In case the translation fails to an error when only part of the translation is done
+        # write the currently translated text also to the output.md
+        write_to_file("output.md", final_text)    
     print("  ")
     print("  ")
     write_to_file("output.md", final_text)
