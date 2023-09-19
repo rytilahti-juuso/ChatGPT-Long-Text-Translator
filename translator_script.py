@@ -223,6 +223,7 @@ if not INITIAL_PROMPT:
     exit(1)
 
 if file_content:
+    USE_DEBUG_TEXT_IN_THE_OUTPUT = False
     CHUNK_SIZE_LATEX_GPT_4 = 240
     CHUNK_SIZE_PLAIN_TEXT_OR_MD_GPT_4 = 290
     chunks = split_into_chunks(file_content, chunk_size=CHUNK_SIZE_LATEX_GPT_4)
@@ -245,10 +246,12 @@ if file_content:
         # Latest element, value of content property
         trans = messages[len(messages)-1]["content"]
         
-        #Divination between chuns to add readability (Normally if the translation fails, the translation of the whole chunk fails)
+        #Divination between chuns to add readability (Normally woith GPT-3.5 if the translation fails, the translation of the whole chunk fails)
         chunk_divination = "\n\n---\n# Chunk "+ str(i)+"\n---\n\n" 
-        
-        final_text =final_text + chunk_divination + trans    
+        if not USE_DEBUG_TEXT_IN_THE_OUTPUT:
+            final_text = final_text + trans # exclude the debug text
+        else:
+            final_text =final_text + chunk_divination + trans    
     print("  ")
     print("  ")
     write_to_file("output.md", final_text)
