@@ -57,7 +57,7 @@ ChatGPT can also localize the translation. For example it can automatically:
 
 ## Workflow
 1. Complete the initial set-up. Update selected prompt and chunk size if necessary.
-2. Paste the text to the `input.md`. You don't need to worry about exceeding maximum context, the script handles that for you. The text can be in plain text, latex or in markdown format. [Here](https://github.com/rytilahti-juuso/ChatMD) you can find a good Python and Javascript templates on how to extract also the "syntactic sugar" from websites. The script requires some alteration if you want to extract e.g. code syntax from the website.
+2. Paste the text to the `input.md`. You don't need to worry about exceeding maximum context, the script handles that for you. The text can be in plain text, latex or in markdown format. [Here](https://gitlab.utu.fi/tech/soft/tools/edu-ai-tools/chatmd) you can find a good Python and Javascript templates on how to extract also the "syntactic sugar" from websites. The script requires some alteration if you want to extract e.g. code syntax from the website.
 2. Run code in `translator_script.py`. (First run might take long time.) The console prints some of the progress when the process is running. The GPT-4 translation can take up to 2min/chunk, GPT-3.5 is quicker. For latex use always GPT-4.
 3. Finally to see the translated text, open `output.md` with a viewer that supports `markdown` file format.
 
