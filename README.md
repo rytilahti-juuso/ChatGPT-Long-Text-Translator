@@ -50,7 +50,7 @@ ChatGPT can also localize the translation. For example it can automatically:
 - Chunks and their translations can be found from the `debug`-folder.
 
 ## Initial set-up
-1. Change the API key.
+1. Change the API key (line 11).
 2. In code line 206, select one of the prompts as the initial prompt. Currently it is set to do Finnish to English translation. IMPORTANT: write the initial prompt with the target language! (so if the translation is Finnish to Swedish, replace the initial prompt with a translated prompt written in Swedish.)
 3. In the code line 228, set the chunk size to correct one.
 4. Install required libraries.
