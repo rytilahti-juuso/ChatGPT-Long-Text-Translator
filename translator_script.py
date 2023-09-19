@@ -199,8 +199,9 @@ def are_texts_similar(text1, text2, threshold=0.987):
     print("similarity is: " + similarity.astype(str))
     return similarity > threshold
 
-LATEX_GENERAL_PROMPT = "You are a translator. Translate material in the latex file to English. Don't translate the comments. Do not alter the latex syntax, even if you deem it, for example, to miss some elements."
-TRANSLATE_AND_LOCALIZE_STUDY_MATERIAL_PROMPT = "You are a translator. Localize and translate the study materials to English. Keep the meaning of the exercise in translation, but it does not need to be literal translation. If there are Finnish names change them to names used in England. Keep every actor the same."
+LATEX_GENERAL_TRANSLATION_PROMPT = "You are a translator. Translate material in the latex file to English. Don't translate the comments. Do not alter the latex syntax, even if you deem it, for example, to miss some elements."
+GENERAL_TRANSLATION_PROMPT_PLAIN_TEXT_AND_MD = "You are a translator. Translate the material to English." # Not thoroughly tested, but should work for basic usage.
+TRANSLATE_AND_LOCALIZE_STUDY_MATERIAL_PROMPT_PLAIN_TEXT_OR_MD = "You are a translator. Localize and translate the study materials to English. Keep the meaning of the exercise in translation, but it does not need to be literal translation. If there are Finnish names change them to names used in England. Keep every actor the same."
 
 # ------------ SET-UP ------------
 # Set the initial prompt 
