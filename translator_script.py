@@ -72,7 +72,7 @@ def create_messages(prompt, serverAnswer):
 def count_words(input_string):
     return len(input_string.split())
 
-def split_into_chunks(input_string, chunk_size=290):
+def split_into_chunks(input_string, chunk_size=240):
     """
     Args:
         input_string: Whole input string, should be in md-format
@@ -199,8 +199,12 @@ def are_texts_similar(text1, text2, threshold=0.987):
     print("similarity is: " + similarity.astype(str))
     return similarity > threshold
 
+LATEX_GENERAL_PROMPT = "You are a translator. Translate material in the latex file to English. Don't translate the comments. Do not alter the latex syntax, even if you deem it, for example, to miss some elements."
+TRANSLATE_AND_LOCALIZE_STUDY_MATERIAL_PROMPT = "You are a translator. Localize and translate the study materials to English. Keep the meaning of the exercise in translation, but it does not need to be literal translation. If there are Finnish names change them to names used in England. Keep every actor the same."
+
 # ------------ SET-UP ------------
-INITIAL_PROMPT = "You are a translator. Localize and translate the study materials to English. Keep the meaning of the exercise in translation, but it does not need to be literal translation. If there are Finnish names change them to names used in England. Keep every actor the same."
+# Set the initial prompt 
+INITIAL_PROMPT = ""
 # Load BERT tokenizer and model
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 model = BertModel.from_pretrained('bert-base-uncased')
@@ -210,9 +214,18 @@ file_path = "input.md"
 file_content = read_from_file(file_path)
 # ---------------------------------
 
+if not INITIAL_PROMPT:
+    print("There seems to be some additional steps that you need to take.")
+    print("1.) In code line 206, select one of the prompts as the initial prompt")
+    print("2.) In the code line 228, set the chunk size to correct one.")
+    print("3.) Run the program again.")
+    print("Program terminating...")
+    exit(1)
 
 if file_content:
-    chunks = split_into_chunks(file_content)
+    CHUNK_SIZE_LATEX_GPT_4 = 240
+    CHUNK_SIZE_PLAIN_TEXT_OR_MD_GPT_4 = 290
+    chunks = split_into_chunks(file_content, chunk_size=CHUNK_SIZE_LATEX_GPT_4)
     final_text = ""
     previous_messages = None
     print("input.md has been broken down to "+str(len(chunks)) + " chunks.")
