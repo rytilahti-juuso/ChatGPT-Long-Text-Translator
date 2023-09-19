@@ -14,7 +14,7 @@
 ## Translating text in latex format
 ChatGPT can keep the correct syntax of latex while translating text. Please use GPT-4 as the model for this.
 
-Important note: If the translated text compiles without errors, but the pdf preview is missing some part of the text, check that there has not appeared additional `\end{document}`.
+Important note: If the translated text compiles without errors, but the pdf preview is missing some part of the text, check that there has not appeared additional `\end{document}` in the file.
 
 
 ## Translating and localizing study materials
@@ -69,9 +69,13 @@ Translation chunk size can be altered in two ways:
 - Change text chunk size by altering parameter `chunk_size` in `split_into_chunks()`. This is the preferred way if the error message about **exceeding maximum token size** (context) pops up
 - You can also try to modify the amount of previous chunks saved in context in `get_messages()`. However the current amount of previous chunks saved in context seems to be okay.
 
-#### 2.) Why in the output.md the chunk divination is shown?
+#### 2.) Why chunk divination can be set to be shown in the output.md?
 
-The chunks are visible in the `output.md` because, at least in the ChatGPT 3.5, if the translation fails (e.g. ChatGPT starts to hallucinate or the translation is set as the original text) the translation of the whole chunk fails. This way the user can skip to next chunk more easily. **However**, as stated before, ChatGPT has tendency to hallucinate examples and additional headlines, especially in the start of a chunk, so read the chunk a little further than the headline and few starting sentences of each chunk!
+**GPT-3.5**: The chunks are visible in the `output.md` because when the ChatGPT 3.5 is used and the translation fails (e.g. ChatGPT starts to hallucinate or the translation is set as the original text) the translation of the whole chunk fails. This way the user can skip to next chunk more easily. **However**, as stated before, ChatGPT-3.5 has tendency to hallucinate examples and additional headlines, especially in the start of a chunk, so read the chunk a little further than the headline and few starting sentences of each chunk!
+
+**GPT-4**: With GPT-4 this debug option is almost never needed. With GPT-4 the "hallucinations" of the translation occur much more rarely than in GPT-3.5, and often are more subtle e.g. additional headline, sentence or, in latex, additional `\end{document}` appearing at the end of the chunk.
+
+ 
 
 #### 3.) Why input and output are using markdown as the file format?
 There are a couple of reasons for this.
