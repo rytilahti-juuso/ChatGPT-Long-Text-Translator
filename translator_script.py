@@ -118,9 +118,9 @@ def split_into_chunks(input_string, chunk_size=240):
 
 def write_to_file(file_path, content):
     try:
-        with open(file_path, 'w') as file:
+        with open(file_path, 'w', encoding='utf-8') as file:
             file.write(content)
-        print("Successfully wrote to the file." + file_path)
+        print("Successfully wrote to the file: " + file_path)
     except Exception as e:
         print(f"An error occurred: {e}")
 
